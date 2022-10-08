@@ -1,0 +1,47 @@
+{
+  "name": "lazy_load_react_images",
+  "version": "0.0.1",
+  "description": "dynamic expose for Web. mobile, support 'IntersectionObserver' and 'Scroll'",
+  "scripts": {
+    "dev": "tsc -w & babel src  --extensions '.js' --out-dir es -w",
+    "build": "tsc & babel src  --extensions '.js' --out-dir es"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dxdnsicon/dyncExpose.git"
+  },
+  "files": [
+    "es",
+    "CHANGELOG.md"
+  ],
+  "author": "shiningding<shiningding@tencent.com>",
+  "license": "ISC",
+  "dependencies": {
+    "dync_expose": "0.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.7.0",
+    "@babel/core": "7.7.2",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-decorators": "^7.13.15",
+    "@babel/plugin-transform-modules-commonjs": "^7.13.8",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "7.7.1",
+    "@babel/preset-typescript": "^7.13.0",
+    "@babel/runtime": "7.8.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^27.4.0",
+    "@types/mocha": "^9.1.0",
+    "babel-eslint": "10.1.0",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.18.3",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "typescript": "^4.6.3"
+  }
+}
