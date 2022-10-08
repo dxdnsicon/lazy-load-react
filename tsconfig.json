@@ -9,11 +9,13 @@
     "sourceMap": false,
     "rootDir": "./src",
     "strict": true,
+    "outDir": "./es",
+    "declarationDir": "es",
     "noImplicitAny": false,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "exclude": ["node_modules"]
 }
