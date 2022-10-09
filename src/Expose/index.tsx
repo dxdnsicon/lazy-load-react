@@ -2,7 +2,7 @@
  * @Author: shiningding <shiningding@tencent.com>
  * @Date: 2021-09-15 10:37:36
  * @--------------------------------------------------:
- * @LastEditTime: 2022-10-08 17:24:20
+ * @LastEditTime: 2022-10-09 14:18:31
  * @Modified By: shiningding <shiningding@tencent.com>
  * @---------------------------------------------------:
  * @Description: 曝光组件
@@ -32,7 +32,7 @@ export type ExposeProps = {
   children?: React.ReactElement;
 }
 
-function QMExpose({ children, wrap, id = '', cb, src, isRepeat, className, useScroll }: ExposeProps): React.ReactElement<ExposeProps> {
+function Expose({ children, wrap, id = '', cb, src, isRepeat, className, useScroll }: ExposeProps): React.ReactElement<ExposeProps> {
   let exposeId = wrap ? `${wrap}_${id}` : `${id}`;
   exposeId = isRepeat ? `${exposeId}_isRepeat` : exposeId;
   const exposeRef = useRef<any>(null);
@@ -58,7 +58,7 @@ function QMExpose({ children, wrap, id = '', cb, src, isRepeat, className, useSc
 
 
   const noSpan = !!children?.props?.className;
-  if (!noSpan) {
+  if (!noSpan && !src) {
     console.error('children length must be 1')
     return <></>
   }
@@ -93,4 +93,4 @@ function QMExpose({ children, wrap, id = '', cb, src, isRepeat, className, useSc
   </>
 };
 
-export default QMExpose;
+export default Expose;

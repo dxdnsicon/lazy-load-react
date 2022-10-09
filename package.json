@@ -1,6 +1,6 @@
 {
   "name": "lazy_load_react_images",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "dynamic expose for Web. mobile, lazy load, load more",
   "scripts": {
     "es": "tsc --declarationDir es --emitDeclarationOnly && babel src --extensions '.js,.jsx,.ts,.tsx' --out-dir es",
