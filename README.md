@@ -1,5 +1,5 @@
 # dynamic expose module for react:
-dynamic expose, support 'IntersectionObserver' and 'Scroll',
+支持图片懒加载，DOM元素曝光可视区，长列表滚动加载更多，三种场景。
 基于window.IntersectionObserver 实现，摒弃scroll的方式，理论上性能会好一些。不用绑定很多的滚动监听，在不支持的环境里会降级成scroll，使用者不用担心兼容性问题
 ### lazy load example:
 ```
