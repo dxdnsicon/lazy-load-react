@@ -1,6 +1,6 @@
 {
   "name": "lazy_load_react_images",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "dynamic expose for Web. mobile, lazy load, load more",
   "scripts": {
     "es": "tsc --declarationDir es --emitDeclarationOnly && babel src --extensions '.js,.jsx,.ts,.tsx' --out-dir es",
@@ -17,7 +17,7 @@
   "author": "shiningding<shiningding@tencent.com>",
   "license": "ISC",
   "dependencies": {
-    "dync_expose": "0.0.2"
+    "dync_expose": "0.0.3"
   },
   "devDependencies": {
     "@babel/cli": "7.7.0",

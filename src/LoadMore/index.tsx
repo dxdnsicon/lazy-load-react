@@ -2,7 +2,7 @@
  * @Author: shiningding <shiningding@tencent.com>
  * @Date: 2021-09-22 17:28:07
  * @--------------------------------------------------:
- * @LastEditTime: 2022-10-08 17:16:21
+ * @LastEditTime: 2022-10-09 16:27:24
  * @Modified By: shiningding <shiningding@tencent.com>
  * @---------------------------------------------------:
  * @Description: 滚动加载更多，翻页组件
@@ -44,18 +44,14 @@ function QMLoadMore({ id, loadText = '正在载入...', parentNodeId, children, 
 
   isLoadOver.current = isOver;
 
-  const initExpose = (keyName: string, dom) => {
+  const initExpose = (keyName: string) => {
     const exposeId = `${id}-loadmore-${keyName}-isRepeat`;
-    const target: HTMLElement | null = dom.current;
-    if (!target) return;
     const parent = parentNodeId ? document.querySelector(parentNodeId) as HTMLElement : null;
     ExposeHandler({
       id: exposeId,
-      target,
       parent,
       cb: () => {
         setLoading(1);
-        console.log('checkNow.current', checkNow.current, checkNum.current)
         if (checkNow.current <= checkNum.current && !canAddNum.current) {
           canAddNum.current = true;
           if (isLoadOver.current) {
@@ -63,7 +59,6 @@ function QMLoadMore({ id, loadText = '正在载入...', parentNodeId, children, 
             return;
           }
           checkNow.current++;
-          console.log('加载了')
           localLoadMore && localLoadMore.current && localLoadMore.current();
         } else if (checkNow.current > checkNum.current) {
           checkNow.current = checkNum.current
@@ -74,10 +69,10 @@ function QMLoadMore({ id, loadText = '正在载入...', parentNodeId, children, 
 
   useEffect(() => {
     if (exposeRef && exposeRef.current) {
-      initExpose('middle', exposeRef)
+      initExpose('middle')
     }
     if (exposeOverRef && exposeOverRef.current) {
-      initExpose('over', exposeOverRef)
+      initExpose('over')
     }
   }, []);
 

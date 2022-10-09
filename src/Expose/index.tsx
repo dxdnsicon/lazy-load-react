@@ -2,7 +2,7 @@
  * @Author: shiningding <shiningding@tencent.com>
  * @Date: 2021-09-15 10:37:36
  * @--------------------------------------------------:
- * @LastEditTime: 2022-10-09 14:18:31
+ * @LastEditTime: 2022-10-09 16:21:08
  * @Modified By: shiningding <shiningding@tencent.com>
  * @---------------------------------------------------:
  * @Description: 曝光组件
@@ -35,25 +35,20 @@ export type ExposeProps = {
 function Expose({ children, wrap, id = '', cb, src, isRepeat, className, useScroll }: ExposeProps): React.ReactElement<ExposeProps> {
   let exposeId = wrap ? `${wrap}_${id}` : `${id}`;
   exposeId = isRepeat ? `${exposeId}_isRepeat` : exposeId;
-  const exposeRef = useRef<any>(null);
   const [show, setShow] = useState<boolean>(showMap[exposeId] || false);
 
   useEffect(() => {
-    if (exposeRef && exposeRef.current) {
-      const target: HTMLElement = exposeRef.current;
-      const parent = wrap ? (document.querySelector(wrap) as HTMLElement) : null;
-      ExposeHandler({
-        id: exposeId,
-        target,
-        parent,
-        useScroll,
-        cb() {
-          cb && cb();
-          setShow(true);
-          showMap[exposeId] = true;
-        },
-      });
-    }
+    const parent = wrap ? (document.querySelector(wrap) as HTMLElement) : null;
+    ExposeHandler({
+      id: exposeId,
+      parent,
+      useScroll,
+      cb() {
+        cb && cb();
+        setShow(true);
+        showMap[exposeId] = true;
+      },
+    });
   }, []);
 
 
@@ -66,7 +61,7 @@ function Expose({ children, wrap, id = '', cb, src, isRepeat, className, useScro
   return <>
     {
       src ? <>
-        {show ? <img src={src} className={className} ref={exposeRef} id={exposeId} /> : <div className={className} style={{ border: 0 }} ref={exposeRef} id={exposeId} />}
+        {show ? <img src={src} className={className} id={exposeId} /> : <div className={className} style={{ border: 0 }} id={exposeId} />}
       </> : <>
         {React.Children.map(children, (child, index: number) => {
           if (!child) return <></>;
@@ -79,7 +74,6 @@ function Expose({ children, wrap, id = '', cb, src, isRepeat, className, useScro
               ...props,
               ...{
                 key: index,
-                ref: exposeRef,
                 id: exposeId,
                 style: {
                   ...style,
