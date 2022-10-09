@@ -2,7 +2,7 @@
  * @Author: shiningding <shiningding@tencent.com>
  * @Date: 2021-09-22 17:28:07
  * @--------------------------------------------------:
- * @LastEditTime: 2022-10-09 16:27:24
+ * @LastEditTime: 2022-10-09 16:31:48
  * @Modified By: shiningding <shiningding@tencent.com>
  * @---------------------------------------------------:
  * @Description: 滚动加载更多，翻页组件
@@ -34,8 +34,6 @@ function QMLoadMore({ id, loadText = '正在载入...', parentNodeId, children, 
   const checkNum = useRef<number>(0); // 记录当前应该是第几次
   const checkNow = useRef<number>(0); // 记录当前实际是第几次触发
   const canAddNum = useRef<boolean>(false); // 判断当前是否是合理的状态变更，每次只允许变更一次
-  const exposeRef = useRef<HTMLElement>(null); // 这个元素用来控制预加载
-  const exposeOverRef = useRef<HTMLElement>(null); // 这个元素用来控制见底 兜底加载
   const [loading, setLoading] = useState<number>(0);
   const isLoadOver = useRef(false);
   const loadWrap = useRef<HTMLDivElement>(null);
@@ -68,12 +66,8 @@ function QMLoadMore({ id, loadText = '正在载入...', parentNodeId, children, 
   }
 
   useEffect(() => {
-    if (exposeRef && exposeRef.current) {
-      initExpose('middle')
-    }
-    if (exposeOverRef && exposeOverRef.current) {
-      initExpose('over')
-    }
+    initExpose('middle');
+    initExpose('over');
   }, []);
 
   useEffect(() => {
@@ -105,7 +99,6 @@ function QMLoadMore({ id, loadText = '正在载入...', parentNodeId, children, 
       {loadingText}
       <i
         className="load_more_taret"
-        ref={exposeRef}
         id={`${id}-loadmore-middle-isRepeat`}
         style={{
           position: 'absolute',
@@ -116,7 +109,6 @@ function QMLoadMore({ id, loadText = '正在载入...', parentNodeId, children, 
       ></i>
       <i
         className="load_more_taret"
-        ref={exposeOverRef}
         id={`${id}-loadmore-over-isRepeat`}
         style={{
           position: 'absolute',
