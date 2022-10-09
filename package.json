@@ -1,6 +1,6 @@
 {
   "name": "lazy_load_react_images",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "dynamic expose for Web. mobile, lazy load, load more",
   "scripts": {
     "es": "tsc --declarationDir es --emitDeclarationOnly && babel src --extensions '.js,.jsx,.ts,.tsx' --out-dir es",
@@ -17,13 +17,13 @@
   "author": "shiningding<shiningding@tencent.com>",
   "license": "ISC",
   "dependencies": {
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
-    "@babel/plugin-proposal-optional-chaining": "^7.18.9",
     "dync_expose": "0.0.2"
   },
   "devDependencies": {
     "@babel/cli": "7.7.0",
     "@babel/core": "7.7.2",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.18.9",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-decorators": "^7.13.15",
     "@babel/plugin-transform-modules-commonjs": "^7.13.8",
